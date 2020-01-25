@@ -16,6 +16,7 @@ extension DataParser {
     func parse<T: Decodable>(data: Data?) -> Result<T, ErrorResult> {
         do {
             let decoder = JSONDecoder()
+            decoder.keyDecodingStrategy = .convertFromSnakeCase
             if let data = data {
                 let model = try decoder.decode(T.self,
                                                from: data)

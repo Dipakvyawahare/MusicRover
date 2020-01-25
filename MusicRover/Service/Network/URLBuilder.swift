@@ -11,8 +11,8 @@ import UIKit
 class URLBuilder {
     private var components: URLComponents
     
-    init() {
-        self.components = URLComponents()
+    init(url: String = "") {
+        self.components = URLComponents(string: url) ?? URLComponents()
     }
     
     func set(host: String) -> URLBuilder {
@@ -29,11 +29,18 @@ class URLBuilder {
         return self
     }
     
-    func addQueryItem(name: String, value: String) -> URLBuilder  {
+    func addQueryItem(name: String, value: String) -> URLBuilder {
         if self.components.queryItems == nil {
             self.components.queryItems = []
         }
         self.components.queryItems?.append(URLQueryItem(name: name, value: value))
+        return self
+    }
+    
+    func addQueryItems(queries: [String: String]) -> URLBuilder {
+        for item in queries {
+            _ = addQueryItem(name: item.key, value: item.value)
+        }
         return self
     }
     

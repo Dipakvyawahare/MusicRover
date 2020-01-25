@@ -8,20 +8,22 @@
 
 import Foundation
 
-let endPoint = URL(string: "http://api.deezer.com")!
+let endPoint = "http://api.deezer.com"
 //let searchArtist = URL(string: "http://api.deezer.com/search/artist?q=kygo")!
 //let artistAlbums = URL(string: "http://api.deezer.com/artist/8706544/albums")!
 //let albumInfo = URL(string: "http://api.deezer.com/album/125657812")!
 //let albumTracks = URL(string: "http://api.deezer.com/album/125657812/tracks")!
 
 protocol RequestServiceProtocol {
-    @discardableResult func fetchData(using params: [String: String],
+    @discardableResult func fetchData(for path: String,
+                                      queryParmas: [String: String],
                                       completion: @escaping (
         (Result<Data, ErrorResult>) -> Void)) -> URLSessionDataTask?
 }
 
 final class RequestService: RequestServiceProtocol {
     static let shared = RequestService()
+    private init() {}
     
     lazy var session: URLSession = {
         let session = URLSession(configuration: URLSessionConfiguration.default,
@@ -30,10 +32,17 @@ final class RequestService: RequestServiceProtocol {
         return session
     }()
     
-    @discardableResult func fetchData(using params: [String: String],
+    @discardableResult func fetchData(for path: String,
+                                      queryParmas: [String: String],
                                       completion: @escaping (
         (Result<Data, ErrorResult>) -> Void)) -> URLSessionDataTask? {
-        let apiUrl = endPoint//.appendParameters(params: params)
+        guard let apiUrl = URLBuilder(url: endPoint)
+            .set(path: path)
+            .addQueryItems(queries: queryParmas)
+            .build() else {
+                print("Invalid URL")
+                return nil
+        }
         let request = URLRequest(url: apiUrl)
         if let reachability = Reachability(), !reachability.isReachable {
             completion(.failure(ErrorResult(.network, "No Netwok connection!")))
