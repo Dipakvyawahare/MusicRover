@@ -3,7 +3,7 @@
 //  MusicRover
 //
 //  Created by Dipak V. Vyawahare on 25/01/20.
-//  Copyright (c) 2020 Globant Inc. All rights reserved.
+//  Copyright (c) 2020 MyOrganization Inc. All rights reserved.
 //
 
 struct SearchArtist {
@@ -11,9 +11,16 @@ struct SearchArtist {
         let inputString: String
     }
     struct Response {
-        let result: Result<Artist, ErrorResult>
+        let result: Result<[Artist], ErrorResult>
+        let shouldAllowLoadMore = false
     }
     struct ViewModel {
-        let formattedString: String
+        struct RowDataSource {
+            let image: String
+            let name: String
+            let description: String
+        }
+        let artists: [RowDataSource]
+        let shouldAllowLoadMore: Bool
     }
 }

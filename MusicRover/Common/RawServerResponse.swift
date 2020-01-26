@@ -8,6 +8,6 @@
 
 class RawAPIResponse<T: Decodable>: Decodable {
     let data: [T]?
-    let total: Int?
+    let total: Int
     let next: String?
 }

@@ -3,7 +3,7 @@
 //  MusicRover
 //
 //  Created by Dipak V. Vyawahare on 25/01/20.
-//  Copyright (c) 2020 Globant Inc. All rights reserved.
+//  Copyright (c) 2020 MyOrganization Inc. All rights reserved.
 //
 
 import UIKit
@@ -11,6 +11,10 @@ import UIKit
 class SearchArtistViewController: UIViewController {
     var output: SearchArtistViewControllerInteractorInterface?
     var router: SearchArtistRouter = SearchArtistRouter()
+    
+    lazy var tableViewDataSource = SearchArtistsTableViewDataSource()
+    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchBar: UISearchBar!
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -33,23 +37,39 @@ class SearchArtistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        searchArtist()
+        tableView.estimatedRowHeight = 100
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.dataSource = tableViewDataSource
+//        tableView.delegate = tableViewDataSource
     }
     
-    func searchArtist() {
-        let request = SearchArtist.Request(inputString: "My Input String")
+    func searchArtist(seed: String) {
+        let request = SearchArtist.Request(inputString: seed)
         output?.searchArtist(request: request)
     }
+    
 }
 
 extension SearchArtistViewController: SearchArtistPresenterViewControllerInterface {
+    func displayError(message: String) {
+        
+    }
+    
     func displayArtists(viewModel: SearchArtist.ViewModel) {
-        print(viewModel.formattedString)
+        tableViewDataSource.artists = viewModel.artists
+        tableView.reloadData()
     }
 }
 
 extension SearchArtistViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
+    }
+}
+
+extension SearchArtistViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar,
+                   textDidChange searchText: String) {
+        searchArtist(seed: searchText)
     }
 }
