@@ -27,30 +27,31 @@
                                 <rect key="frame" x="0.0" y="154" width="414" height="708"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArtistTableViewCellId" rowHeight="72" id="UPs-qT-CPl" customClass="ArtistTableViewCell" customModule="MusicRover" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="414" height="72"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ArtistTableViewCellId" rowHeight="90" id="UPs-qT-CPl" customClass="ArtistTableViewCell" customModule="MusicRover" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="90"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UPs-qT-CPl" id="492-uV-dEm">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uw1-ni-WCa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="72"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="90"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kap-Ph-eZz">
-                                                            <rect key="frame" x="2" y="2" width="68" height="68"/>
+                                                            <rect key="frame" x="5" y="2.5" width="85" height="85"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="width" secondItem="Kap-Ph-eZz" secondAttribute="height" id="APV-yB-hvf"/>
+                                                                <constraint firstAttribute="height" constant="85" id="a7g-9p-M6b"/>
+                                                                <constraint firstAttribute="width" constant="85" id="u14-Ke-YnG"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="CJd-1O-9UL">
-                                                            <rect key="frame" x="79" y="10" width="50" height="25.5"/>
+                                                            <rect key="frame" x="99" y="10" width="50" height="25.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.59999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="bxX-cQ-Tah">
-                                                            <rect key="frame" x="79" y="42.5" width="39.5" height="19.5"/>
+                                                            <rect key="frame" x="99" y="42.5" width="39.5" height="19.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
@@ -58,15 +59,16 @@
                                                     </subviews>
                                                     <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="bottom" secondItem="Kap-Ph-eZz" secondAttribute="bottom" constant="2" id="0t0-NG-TEj"/>
+                                                        <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Kap-Ph-eZz" secondAttribute="bottom" constant="2" id="0t0-NG-TEj"/>
                                                         <constraint firstItem="bxX-cQ-Tah" firstAttribute="top" secondItem="CJd-1O-9UL" secondAttribute="bottom" constant="7" id="DLN-Dy-Tct"/>
-                                                        <constraint firstItem="Kap-Ph-eZz" firstAttribute="leading" secondItem="uw1-ni-WCa" secondAttribute="leading" constant="2" id="JSU-42-y1r"/>
+                                                        <constraint firstItem="Kap-Ph-eZz" firstAttribute="leading" secondItem="uw1-ni-WCa" secondAttribute="leading" constant="5" id="JSU-42-y1r"/>
                                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="CJd-1O-9UL" secondAttribute="trailing" constant="5" id="KDm-o5-yso"/>
                                                         <constraint firstItem="CJd-1O-9UL" firstAttribute="top" secondItem="uw1-ni-WCa" secondAttribute="top" constant="10" id="Ses-Cx-WpW"/>
                                                         <constraint firstItem="CJd-1O-9UL" firstAttribute="leading" secondItem="Kap-Ph-eZz" secondAttribute="trailing" constant="9" id="T8G-zp-02w"/>
+                                                        <constraint firstItem="Kap-Ph-eZz" firstAttribute="centerY" secondItem="uw1-ni-WCa" secondAttribute="centerY" id="bWI-3i-sKY"/>
                                                         <constraint firstItem="bxX-cQ-Tah" firstAttribute="leading" secondItem="CJd-1O-9UL" secondAttribute="leading" id="cwp-IK-Pm5"/>
                                                         <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bxX-cQ-Tah" secondAttribute="bottom" constant="10" id="mDP-yQ-3Tg"/>
-                                                        <constraint firstItem="Kap-Ph-eZz" firstAttribute="top" secondItem="uw1-ni-WCa" secondAttribute="top" constant="2" id="zyK-Mh-wSK"/>
+                                                        <constraint firstItem="Kap-Ph-eZz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="uw1-ni-WCa" secondAttribute="top" constant="2" id="zyK-Mh-wSK"/>
                                                     </constraints>
                                                 </view>
                                             </subviews>

@@ -36,6 +36,7 @@
 		4719FEB423DD901600B1ED81 /* Sample.json in Resources */ = {isa = PBXBuildFile; fileRef = 4719FEB323DD901600B1ED81 /* Sample.json */; };
 		4719FEB723DD96A000B1ED81 /* SearchArtistsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEB623DD96A000B1ED81 /* SearchArtistsTableViewDataSource.swift */; };
 		4719FEB923DDB0A500B1ED81 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEB823DDB0A500B1ED81 /* ImageLoader.swift */; };
+		4719FEBB23DE0BEC00B1ED81 /* AppDisplayable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEBA23DE0BEC00B1ED81 /* AppDisplayable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		4719FEB323DD901600B1ED81 /* Sample.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Sample.json; sourceTree = "<group>"; };
 		4719FEB623DD96A000B1ED81 /* SearchArtistsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchArtistsTableViewDataSource.swift; sourceTree = "<group>"; };
 		4719FEB823DDB0A500B1ED81 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		4719FEBA23DE0BEC00B1ED81 /* AppDisplayable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDisplayable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +224,7 @@
 				4719FE7F23DCADF000B1ED81 /* URLExtensions.swift */,
 				4719FE8023DCADF000B1ED81 /* UIImageExtensions.swift */,
 				4719FE8123DCADF000B1ED81 /* UIViewExtensions.swift */,
+				4719FEBA23DE0BEC00B1ED81 /* AppDisplayable.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -468,6 +471,7 @@
 				4719FEA223DCB5A300B1ED81 /* SearchArtistViewController.swift in Sources */,
 				4719FE9D23DCB5A300B1ED81 /* SearchArtistInterfaces.swift in Sources */,
 				4719FE9023DCADF000B1ED81 /* Result.swift in Sources */,
+				4719FEBB23DE0BEC00B1ED81 /* AppDisplayable.swift in Sources */,
 				4719FE9123DCADF000B1ED81 /* ErrorResult.swift in Sources */,
 				4719FEB723DD96A000B1ED81 /* SearchArtistsTableViewDataSource.swift in Sources */,
 				4719FE9323DCADF000B1ED81 /* DataParser.swift in Sources */,

@@ -15,6 +15,7 @@ class SearchArtistViewController: UIViewController {
     lazy var tableViewDataSource = SearchArtistsTableViewDataSource()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    var shouldLoadMoreObject = false
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -40,24 +41,42 @@ class SearchArtistViewController: UIViewController {
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = tableViewDataSource
-//        tableView.delegate = tableViewDataSource
+        tableView.delegate = self
     }
     
-    func searchArtist(seed: String) {
-        let request = SearchArtist.Request(inputString: seed)
-        output?.searchArtist(request: request)
+    func searchArtist(seed: String?, loadMore: Bool = false) {
+        if let seed = seed, seed.count > 0 {
+            let request = SearchArtist.Request(inputString: seed)
+            if loadMore {
+                output?.loadMoreArtist(request: request)
+            } else {
+                output?.searchArtist(request: request)
+            }
+        }
     }
-    
 }
 
-extension SearchArtistViewController: SearchArtistPresenterViewControllerInterface {
-    func displayError(message: String) {
-        
+extension SearchArtistViewController: SearchArtistPresenterViewControllerInterface, AppDisplayable {
+    func displayError(error: ErrorResult) {
+        let retryAction = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
+            self?.searchArtist(seed: self?.searchBar.text)
+        }
+        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        switch error {
+        case .custom(let msg):
+            self.display(title: "Alert", error: msg, actions: [retryAction])
+        case .network(let msg):
+            self.display(title: "Network", error: msg, actions: [retryAction])
+        case .parser(let msg):
+            self.display(title: "Parser", error: msg, actions: [okAction])
+        }
+        shouldLoadMoreObject = false
     }
     
     func displayArtists(viewModel: SearchArtist.ViewModel) {
         tableViewDataSource.artists = viewModel.artists
         tableView.reloadData()
+        shouldLoadMoreObject = viewModel.shouldAllowLoadMore
     }
 }
 
@@ -71,5 +90,24 @@ extension SearchArtistViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar,
                    textDidChange searchText: String) {
         searchArtist(seed: searchText)
+    }
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.endEditing(true)
+    }
+}
+
+extension SearchArtistViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height, shouldLoadMoreObject == true {
+            searchArtist(seed: searchBar.text, loadMore: true)
+        }
     }
 }

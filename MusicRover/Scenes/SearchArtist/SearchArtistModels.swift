@@ -12,7 +12,7 @@ struct SearchArtist {
     }
     struct Response {
         let result: Result<[Artist], ErrorResult>
-        let shouldAllowLoadMore = false
+        let shouldAllowLoadMore: Bool
     }
     struct ViewModel {
         struct RowDataSource {

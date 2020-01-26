@@ -53,11 +53,14 @@ extension SearchArtistInteractor: SearchArtistViewControllerInteractorInterface 
     
     func presentResult() {
         let artists = cachedResult?.objects ?? []
-        output?.presentArtistSearchResult(response: SearchArtist.Response(result: .success(artists)))
+        let shouldAllowLoadMore = cachedResult?.shouldLoadMore ?? false
+        output?.presentArtistSearchResult(response: SearchArtist.Response(result: .success(artists),
+                                                                          shouldAllowLoadMore: shouldAllowLoadMore))
     }
     
     func preesntFailure(error: ErrorResult) {
-        output?.presentArtistSearchResult(response: SearchArtist.Response(result: .failure(error)))
+        output?.presentArtistSearchResult(response: SearchArtist.Response(result: .failure(error),
+                                                                          shouldAllowLoadMore: false))
     }
     
     func loadMoreArtist(request: SearchArtist.Request) {

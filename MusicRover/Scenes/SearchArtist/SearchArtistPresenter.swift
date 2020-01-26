@@ -23,7 +23,7 @@ class SearchArtistPresenter: SearchArtistInteractorPresenterInterface {
                                                    shouldAllowLoadMore: response.shouldAllowLoadMore)
             output?.displayArtists(viewModel: viewModel)
         case .failure(let error):
-            output?.displayError(message: error.message)
+            output?.displayError(error: error)
         }
     }
 }

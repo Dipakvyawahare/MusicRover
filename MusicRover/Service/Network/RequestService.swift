@@ -45,7 +45,7 @@ final class RequestService: RequestServiceProtocol {
         }
         let request = URLRequest(url: apiUrl)
         if let reachability = Reachability(), !reachability.isReachable {
-            completion(.failure(ErrorResult(.network, "No Netwok connection!")))
+            completion(.failure(.network(string: "No Netwok connection!")))
             return nil
         }
         let task = session.dataTask(with: request) { (data, _, error) in
@@ -55,7 +55,7 @@ final class RequestService: RequestServiceProtocol {
                     break
                 default:
                     let msg =  "An error occured during request :" + error.localizedDescription
-                    completion(.failure(ErrorResult(.parser, msg)))
+                    completion(.failure(.parser(string: msg)))
                 }
                 return
             }

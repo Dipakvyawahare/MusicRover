@@ -22,11 +22,11 @@ extension DataParser {
                                                from: data)
                 return .success(model)
             } else {
-                return .failure(ErrorResult(.parser, "No Json data"))
+                return .failure(.parser(string: "No Json data"))
             }
             
         } catch _ {
-            return .failure(ErrorResult(.parser, "Error while parsing json data"))
+            return .failure(.parser(string: "Error while parsing json data"))
         }
     }
 }

@@ -7,18 +7,9 @@
 //
 
 import Foundation
-@objc enum ErrorCase: Int {
-    case network
-    case parser
-    case custom
-}
 
-@objcMembers
-class ErrorResult: NSObject, Error {
-    var type: ErrorCase
-    var message = ""
-    init(_ type: ErrorCase, _ message: String) {
-        self.type = type
-        self.message = message
-    }
+enum ErrorResult: Error {
+    case network(string: String)
+    case parser(string: String)
+    case custom(string: String)
 }

@@ -17,5 +17,5 @@ protocol SearchArtistInteractorPresenterInterface {
 
 protocol SearchArtistPresenterViewControllerInterface: class {
     func displayArtists(viewModel: SearchArtist.ViewModel)
-    func displayError(message: String)
+    func displayError(error: ErrorResult)
 }
