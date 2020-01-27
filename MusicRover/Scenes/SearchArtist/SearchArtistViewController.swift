@@ -15,7 +15,10 @@ class SearchArtistViewController: UIViewController {
     lazy var tableViewDataSource = SearchArtistsTableViewDataSource()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     var shouldLoadMoreObject = false
+    var lastSeed = ""
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -44,24 +47,34 @@ class SearchArtistViewController: UIViewController {
         tableView.delegate = self
     }
     
-    func searchArtist(seed: String?, loadMore: Bool = false) {
-        if let seed = seed, seed.count > 0 {
+    @objc private func loadMoreArtist() {
+        if let seed = searchBar.text, seed.count > 0 {
             let request = SearchArtist.Request(inputString: seed)
-            if loadMore {
-                output?.loadMoreArtist(request: request)
-            } else {
-                output?.searchArtist(request: request)
-            }
+            output?.loadMoreArtist(request: request)
+            displayProgressHud(show: true)
+        }
+    }
+    
+    @objc private func searchArtist() {
+        if let seed = searchBar.text, seed.count > 0 {
+            let request = SearchArtist.Request(inputString: seed)
+            output?.searchArtist(request: request)
+            displayProgressHud(show: true)
         }
     }
 }
 
 extension SearchArtistViewController: SearchArtistPresenterViewControllerInterface, AppDisplayable {
+    
     func displayError(error: ErrorResult) {
-        let retryAction = UIAlertAction(title: "Retry", style: .default) { [weak self] _ in
-            self?.searchArtist(seed: self?.searchBar.text)
+        displayProgressHud(show: false)
+        let retryAction = UIAlertAction(title: "Retry",
+                                        style: .default) { [weak self] _ in
+                                            self?.searchArtist()
         }
-        let okAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+        let okAction = UIAlertAction(title: "Ok",
+                                     style: .default,
+                                     handler: nil)
         switch error {
         case .custom(let msg):
             self.display(title: "Alert", error: msg, actions: [retryAction])
@@ -74,6 +87,7 @@ extension SearchArtistViewController: SearchArtistPresenterViewControllerInterfa
     }
     
     func displayArtists(viewModel: SearchArtist.ViewModel) {
+        displayProgressHud(show: false)
         tableViewDataSource.artists = viewModel.artists
         tableView.reloadData()
         shouldLoadMoreObject = viewModel.shouldAllowLoadMore
@@ -89,7 +103,14 @@ extension SearchArtistViewController {
 extension SearchArtistViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar,
                    textDidChange searchText: String) {
-        searchArtist(seed: searchText)
+        let performAfterDelay = 0.5
+        let selector = #selector(searchArtist)
+        NSObject.cancelPreviousPerformRequests(withTarget: self,
+                                               selector: selector,
+                                               object: nil)
+        perform(selector,
+                with: nil,
+                afterDelay: performAfterDelay)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
@@ -103,11 +124,19 @@ extension SearchArtistViewController: UITableViewDelegate {
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
         let height = scrollView.frame.size.height
         let contentYoffset = scrollView.contentOffset.y
         let distanceFromBottom = scrollView.contentSize.height - contentYoffset
         if distanceFromBottom < height, shouldLoadMoreObject == true {
-            searchArtist(seed: searchBar.text, loadMore: true)
+            let performAfterDelay = 0.2
+            let selector = #selector(loadMoreArtist)
+            NSObject.cancelPreviousPerformRequests(withTarget: self,
+                                                   selector: selector,
+                                                   object: nil)
+            perform(selector,
+                    with: nil,
+                    afterDelay: performAfterDelay)
         }
     }
 }

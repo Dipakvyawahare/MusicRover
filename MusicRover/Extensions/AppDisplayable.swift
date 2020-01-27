@@ -9,9 +9,11 @@
 import UIKit
 
 protocol AppDisplayable {
+    var activityIndicator: UIActivityIndicatorView! {get}
     func display(title: String,
                  error: String,
                  actions: [UIAlertAction])
+    func displayProgressHud(show: Bool)
 }
 
 extension AppDisplayable where Self: UIViewController {
@@ -30,5 +32,13 @@ extension AppDisplayable where Self: UIViewController {
         
         guard let rootController = UIApplication.shared.keyWindow?.rootViewController else { return }
         rootController.present(alertController, animated: true, completion: nil)
+    }
+    
+    func displayProgressHud(show: Bool) {
+        if show {
+            activityIndicator.startAnimating()
+        } else {
+            activityIndicator.stopAnimating()
+        }
     }
 }

@@ -6,7 +6,7 @@
 //  Copyright (c) 2020 MyOrganization Inc. All rights reserved.
 //
 
-protocol SearchArtistViewControllerInteractorInterface {
+protocol SearchArtistViewControllerInteractorInterface: class {
     func searchArtist(request: SearchArtist.Request)
     func loadMoreArtist(request: SearchArtist.Request)
 }
