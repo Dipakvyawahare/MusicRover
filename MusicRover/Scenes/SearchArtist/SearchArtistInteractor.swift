@@ -8,25 +8,6 @@
 
 import UIKit
 
-class PagingDataStore<T> {
-    var index: Int {
-        objects.count
-    }
-    let total: Int
-    private(set) var objects: [T] = []
-    var shouldLoadMore: Bool {
-        objects.count < total
-    }
-    
-    init(total: Int) {
-        self.total = total
-    }
-    
-    func appendObjects(objects: [T]) {
-        self.objects += objects
-    }
-}
-
 class SearchArtistInteractor {
     var output: SearchArtistInteractorPresenterInterface?
     lazy var worker: SearchArtistWorker = SearchArtistWorker()

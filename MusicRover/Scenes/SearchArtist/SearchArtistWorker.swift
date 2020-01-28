@@ -13,24 +13,25 @@ class SearchArtistWorker {
     func searchArtist(inputString: String,
                       index: Int = 0,
                       completion: @escaping (SearchWorkerHandler)) -> URLSessionDataTask? {
-        RequestService.shared.fetchData(for: "search/artist",
-                                        queryParmas: ["q": inputString,
-                                                      "index": String(index)]) { [weak self] (result) in
-                                                        switch result {
-                                                        case .success(let data) :
-                                                            if let parsed: Result<RawAPIResponse<Artist>,
-                                                                ErrorResult> = self?.parse(data: data) {
-                                                                switch parsed {
-                                                                case .success(let poi):
-                                                                    completion(.success(poi))
-                                                                case .failure(let error):
-                                                                    completion(.failure(error))
-                                                                }
-                                                            }
-                                                        case .failure(let error) :
-                                                            print(error)
-                                                        }
+        let task = RequestService.shared.fetchData(for: "search/artist",
+                                                   queryParmas: ["q": inputString,
+                                                                 "index": String(index)]) { [weak self] (result) in
+                                                                    switch result {
+                                                                    case .success(let data) :
+                                                                        if let parsed: Result<RawAPIResponse<Artist>,
+                                                                            ErrorResult> = self?.parse(data: data) {
+                                                                            switch parsed {
+                                                                            case .success(let poi):
+                                                                                completion(.success(poi))
+                                                                            case .failure(let error):
+                                                                                completion(.failure(error))
+                                                                            }
+                                                                        }
+                                                                    case .failure(let error) :
+                                                                        completion(.failure(error))
+                                                                    }
         }
+        return task
     }
 }
 

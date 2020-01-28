@@ -25,7 +25,8 @@ extension DataParser {
                 return .failure(.parser(string: "No Json data"))
             }
             
-        } catch _ {
+        } catch {
+            print(error)
             return .failure(.parser(string: "Error while parsing json data"))
         }
     }

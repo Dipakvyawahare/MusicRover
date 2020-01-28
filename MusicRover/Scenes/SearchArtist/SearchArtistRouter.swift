@@ -9,13 +9,20 @@
 import UIKit
 
 protocol SearchArtistRouterInput {
-    func navigateToSomewhere()
+    func navigateToArtistAlbums(row: SearchArtist.ViewModel.RowDataSource)
 }
 
 class SearchArtistRouter: SearchArtistRouterInput {
     weak var viewController: SearchArtistViewController?
     
-    func navigateToSomewhere() {
-        //viewController.performSegueWithIdentifier("ShowSomewhereScene", sender: nil)
+    func navigateToArtistAlbums(row: SearchArtist.ViewModel.RowDataSource) {
+        let sbrd = viewController?.storyboard
+        if let dvc = sbrd?.instantiateViewController(
+            withIdentifier: "ArtistAlbumsViewController") as? ArtistAlbumsViewController {
+            viewController?.show(dvc, sender: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                dvc.output?.fetchAlbums(request: row)
+            }
+        }
     }
 }

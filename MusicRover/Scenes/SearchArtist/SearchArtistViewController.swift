@@ -18,7 +18,6 @@ class SearchArtistViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     var shouldLoadMoreObject = false
-    var lastSeed = ""
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -94,12 +93,6 @@ extension SearchArtistViewController: SearchArtistPresenterViewControllerInterfa
     }
 }
 
-extension SearchArtistViewController {
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-    }
-}
-
 extension SearchArtistViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar,
                    textDidChange searchText: String) {
@@ -120,7 +113,7 @@ extension SearchArtistViewController: UISearchBarDelegate {
 
 extension SearchArtistViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+        router.navigateToArtistAlbums(row: tableViewDataSource.artists[indexPath.row])
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

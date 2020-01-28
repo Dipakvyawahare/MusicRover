@@ -27,8 +27,8 @@ class ArtistTableViewCell: UITableViewCell {
 }
 
 class SearchArtistsTableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
-    weak var tableView: UITableView?
     var artists: [SearchArtist.ViewModel.RowDataSource] = []
+    
     func tableView(_ tableView: UITableView,
                    numberOfRowsInSection section: Int) -> Int {
         return artists.count

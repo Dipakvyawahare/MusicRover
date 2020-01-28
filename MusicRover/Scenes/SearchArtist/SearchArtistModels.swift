@@ -16,6 +16,7 @@ struct SearchArtist {
     }
     struct ViewModel {
         struct RowDataSource {
+            let id: Int
             let image: String
             let name: String
             let description: String

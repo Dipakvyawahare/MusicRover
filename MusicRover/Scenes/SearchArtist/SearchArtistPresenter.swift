@@ -15,7 +15,8 @@ class SearchArtistPresenter: SearchArtistInteractorPresenterInterface {
             var rows = [SearchArtist.ViewModel.RowDataSource]()
             for item in artists {
                 let descri = "Fans- \(item.nbFan)\nAlbums- \(item.nbAlbum)"
-                rows.append(SearchArtist.ViewModel.RowDataSource(image: item.pictureMedium,
+                rows.append(SearchArtist.ViewModel.RowDataSource(id: item.id,
+                                                                 image: item.pictureMedium,
                                                                  name: item.name,
                                                                  description: descri))
             }
