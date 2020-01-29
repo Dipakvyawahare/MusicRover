@@ -56,6 +56,12 @@
 		4719FEE023E1547B00B1ED81 /* AlbumDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FED923E1547B00B1ED81 /* AlbumDetailsInteractor.swift */; };
 		4719FEE223E1558E00B1ED81 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEE123E1558E00B1ED81 /* Track.swift */; };
 		4719FEE423E167C700B1ED81 /* AlbumDetailsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEE323E167C700B1ED81 /* AlbumDetailsTableViewDataSource.swift */; };
+		4719FEE723E1ABC000B1ED81 /* AlbumsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEE523E1ABBF00B1ED81 /* AlbumsTests.swift */; };
+		4719FEE823E1ABC000B1ED81 /* TracksTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEE623E1ABC000B1ED81 /* TracksTests.swift */; };
+		4719FEEA23E1AC1700B1ED81 /* Tracks.json in Resources */ = {isa = PBXBuildFile; fileRef = 4719FEE923E1AC1700B1ED81 /* Tracks.json */; };
+		4719FEF423E1B26600B1ED81 /* SearchArtistInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEF123E1B26600B1ED81 /* SearchArtistInteractorTests.swift */; };
+		4719FEF523E1B26600B1ED81 /* SearchArtistWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEF223E1B26600B1ED81 /* SearchArtistWorkerTests.swift */; };
+		4719FEF623E1B26600B1ED81 /* SearchArtistPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEF323E1B26600B1ED81 /* SearchArtistPresenterTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +136,12 @@
 		4719FED923E1547B00B1ED81 /* AlbumDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsInteractor.swift; sourceTree = "<group>"; };
 		4719FEE123E1558E00B1ED81 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
 		4719FEE323E167C700B1ED81 /* AlbumDetailsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsTableViewDataSource.swift; sourceTree = "<group>"; };
+		4719FEE523E1ABBF00B1ED81 /* AlbumsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumsTests.swift; sourceTree = "<group>"; };
+		4719FEE623E1ABC000B1ED81 /* TracksTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TracksTests.swift; sourceTree = "<group>"; };
+		4719FEE923E1AC1700B1ED81 /* Tracks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Tracks.json; sourceTree = "<group>"; };
+		4719FEF123E1B26600B1ED81 /* SearchArtistInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchArtistInteractorTests.swift; sourceTree = "<group>"; };
+		4719FEF223E1B26600B1ED81 /* SearchArtistWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchArtistWorkerTests.swift; sourceTree = "<group>"; };
+		4719FEF323E1B26600B1ED81 /* SearchArtistPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchArtistPresenterTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -341,6 +353,8 @@
 			isa = PBXGroup;
 			children = (
 				4719FEB123DD8FAC00B1ED81 /* ArtistTests.swift */,
+				4719FEE523E1ABBF00B1ED81 /* AlbumsTests.swift */,
+				4719FEE623E1ABC000B1ED81 /* TracksTests.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -350,6 +364,7 @@
 			children = (
 				4719FEB323DD901600B1ED81 /* Sample.json */,
 				4719FED023E0B13500B1ED81 /* Albums.json */,
+				4719FEE923E1AC1700B1ED81 /* Tracks.json */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -365,6 +380,9 @@
 		4719FEB523DD92E900B1ED81 /* SearchArtist */ = {
 			isa = PBXGroup;
 			children = (
+				4719FEF123E1B26600B1ED81 /* SearchArtistInteractorTests.swift */,
+				4719FEF323E1B26600B1ED81 /* SearchArtistPresenterTests.swift */,
+				4719FEF223E1B26600B1ED81 /* SearchArtistWorkerTests.swift */,
 			);
 			path = SearchArtist;
 			sourceTree = "<group>";
@@ -488,6 +506,7 @@
 			files = (
 				4719FEB423DD901600B1ED81 /* Sample.json in Resources */,
 				4719FED123E0B13600B1ED81 /* Albums.json in Resources */,
+				4719FEEA23E1AC1700B1ED81 /* Tracks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -573,7 +592,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				4719FEB223DD8FAC00B1ED81 /* ArtistTests.swift in Sources */,
+				4719FEE723E1ABC000B1ED81 /* AlbumsTests.swift in Sources */,
+				4719FEF623E1B26600B1ED81 /* SearchArtistPresenterTests.swift in Sources */,
 				4719FEB023DD8F4F00B1ED81 /* URLExtensionsTests.swift in Sources */,
+				4719FEF423E1B26600B1ED81 /* SearchArtistInteractorTests.swift in Sources */,
+				4719FEE823E1ABC000B1ED81 /* TracksTests.swift in Sources */,
+				4719FEF523E1B26600B1ED81 /* SearchArtistWorkerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

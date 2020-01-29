@@ -8,26 +8,25 @@
 
 import XCTest
 @testable import MusicRover
-
-class ArtistTests: XCTestCase, DataParser {
+class TracksTests: XCTestCase, DataParser {
 
     func testExampleArtistParsing() {
-        guard let data = FileManager.readJson(forResource: "Sample",
+        guard let data = FileManager.readJson(forResource: "Tracks",
                                               bundle: Bundle(for: ArtistTests.self))  else {
                                                 XCTAssert(false, "Can't get data from sample.json")
                                                 return
         }
-        let result: Result<RawAPIResponse<Artist>, ErrorResult> = parse(data: data)
+        let result: Result<RawAPIResponse<Track>, ErrorResult> = parse(data: data)
         switch result {
         case .success(let response):
             let artists = response.data!
             XCTAssertEqual(artists.count,
-                           25,
-                           "Parsing error or sample.json content")
+                           15,
+                           "Parsing error or Tracks content")
             let artist = artists.first!
             XCTAssertEqual(artist.id,
-                           1878,
-                           "Expected 1878")
+                           597330992,
+                           "Expected 597330992")
         case .failure:
             XCTAssert(false, "testExampleArtistParsing Parser Error")
         }

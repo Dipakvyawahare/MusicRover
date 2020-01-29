@@ -9,11 +9,12 @@
 import UIKit
 
 class SearchArtistWorker {
+    lazy var service: RequestServiceProtocol = RequestService.shared
     typealias SearchWorkerHandler = (Result<RawAPIResponse<Artist>, ErrorResult>) -> Void
     func searchArtist(inputString: String,
                       index: Int = 0,
                       completion: @escaping (SearchWorkerHandler)) -> URLSessionDataTask? {
-        let task = RequestService.shared.fetchData(for: "search/artist",
+        let task = service.fetchData(for: "search/artist",
                                                    queryParmas: ["q": inputString,
                                                                  "index": String(index)]) { [weak self] (result) in
                                                                     switch result {
