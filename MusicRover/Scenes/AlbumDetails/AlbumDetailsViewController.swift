@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 class AlbumDetailsViewController: UIViewController {
     var output: AlbumDetailsViewControllerInteractorInterface?
@@ -14,6 +15,9 @@ class AlbumDetailsViewController: UIViewController {
     lazy var tableViewDataSource = AlbumDetailsTableViewDataSource()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var albumImageView: UIImageView!
+    @IBOutlet weak var playerButton: UIButton!
+    var player: AVPlayer?
     
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
@@ -47,6 +51,32 @@ class AlbumDetailsViewController: UIViewController {
         output?.reload()
         displayProgressHud(show: true)
     }
+    
+    func loadAlbumImage(imageUrl: String) {
+        albumImageView.image = UIImage(systemName: "folder")
+        _ = ImageLoader.shared.loadImage(urlString: imageUrl) { [weak self] (image, _) in
+            if let image = image {
+                self?.albumImageView.image = image
+            }
+        }
+    }
+    
+    func play(url: String) throws {
+        if let url = URL.init(string: url) {
+            let playerItem: AVPlayerItem = AVPlayerItem(url: url)
+            player?.pause()
+            player = AVPlayer(playerItem: playerItem)
+            let playerLayer = AVPlayerLayer(player: player!)
+            playerLayer.frame = CGRect(x: 0, y: 0, width: 10, height: 50)
+            albumImageView.layer.addSublayer(playerLayer)
+            player?.play()
+        }
+    }
+    
+    @IBAction func pauseAudio() {
+        player?.pause()
+        playerButton.isHidden = true
+    }
 }
 
 extension AlbumDetailsViewController: AlbumDetailsPresenterViewControllerInterface, AppDisplayable {
@@ -54,6 +84,8 @@ extension AlbumDetailsViewController: AlbumDetailsPresenterViewControllerInterfa
         displayProgressHud(show: false)
         tableViewDataSource.tracks = viewModel.tracks
         tableView.reloadData()
+        loadAlbumImage(imageUrl: viewModel.album.image)
+        self.title = viewModel.title
     }
     
     func displayError(error: ErrorResult) {
@@ -80,6 +112,11 @@ extension AlbumDetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView,
                    didSelectRowAt indexPath: IndexPath) {
         let link = tableViewDataSource.tracks[indexPath.row].preview
-        
+        do {
+            try play(url: link)
+            playerButton.isHidden = false
+        } catch {
+            print(error)
+        }
     }
 }

@@ -15,7 +15,7 @@ class ArtistTableViewCell: UITableViewCell {
     private var imageLoadTask: URLSessionDataTask?
     var imageUrl: String = "" {
         didSet {
-            artistImageView.image = UIImage(named: "Loading")
+            artistImageView.image = UIImage.init(systemName: "person")
             imageLoadTask?.cancel() // Cancel older load request
             imageLoadTask = ImageLoader.shared.loadImage(urlString: imageUrl) { [weak self] (image, url) in
                 if self?.imageUrl == url {

@@ -44,6 +44,7 @@ class SearchArtistViewController: UIViewController {
         tableView.dataSource = tableViewDataSource
         tableView.delegate = self
         searchBar.becomeFirstResponder()
+        self.title = "Artists"
     }
     
     @objc private func loadMoreArtist() {

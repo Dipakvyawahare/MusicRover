@@ -15,8 +15,6 @@
 		4719FE8A23DCADF000B1ED81 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FE7C23DCADEF00B1ED81 /* Reachability.swift */; };
 		4719FE8B23DCADF000B1ED81 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FE7E23DCADF000B1ED81 /* FileManagerExtensions.swift */; };
 		4719FE8C23DCADF000B1ED81 /* URLExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FE7F23DCADF000B1ED81 /* URLExtensions.swift */; };
-		4719FE8D23DCADF000B1ED81 /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FE8023DCADF000B1ED81 /* UIImageExtensions.swift */; };
-		4719FE8E23DCADF000B1ED81 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FE8123DCADF000B1ED81 /* UIViewExtensions.swift */; };
 		4719FE9023DCADF000B1ED81 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FE8523DCADF000B1ED81 /* Result.swift */; };
 		4719FE9123DCADF000B1ED81 /* ErrorResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FE8623DCADF000B1ED81 /* ErrorResult.swift */; };
 		4719FE9223DCADF000B1ED81 /* RequestService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FE8823DCADF000B1ED81 /* RequestService.swift */; };
@@ -92,8 +90,6 @@
 		4719FE7C23DCADEF00B1ED81 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		4719FE7E23DCADF000B1ED81 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		4719FE7F23DCADF000B1ED81 /* URLExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLExtensions.swift; sourceTree = "<group>"; };
-		4719FE8023DCADF000B1ED81 /* UIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
-		4719FE8123DCADF000B1ED81 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
 		4719FE8523DCADF000B1ED81 /* Result.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		4719FE8623DCADF000B1ED81 /* ErrorResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorResult.swift; sourceTree = "<group>"; };
 		4719FE8823DCADF000B1ED81 /* RequestService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestService.swift; sourceTree = "<group>"; };
@@ -277,8 +273,6 @@
 			children = (
 				4719FE7E23DCADF000B1ED81 /* FileManagerExtensions.swift */,
 				4719FE7F23DCADF000B1ED81 /* URLExtensions.swift */,
-				4719FE8023DCADF000B1ED81 /* UIImageExtensions.swift */,
-				4719FE8123DCADF000B1ED81 /* UIViewExtensions.swift */,
 				4719FEBA23DE0BEC00B1ED81 /* AppDisplayable.swift */,
 			);
 			path = Extensions;
@@ -552,7 +546,6 @@
 				4719FEE223E1558E00B1ED81 /* Track.swift in Sources */,
 				4719FEC923DF492400B1ED81 /* ArtistAlbumsInteractor.swift in Sources */,
 				4719FEDD23E1547B00B1ED81 /* AlbumDetailsRouter.swift in Sources */,
-				4719FE8E23DCADF000B1ED81 /* UIViewExtensions.swift in Sources */,
 				4719FEA723DCBC4100B1ED81 /* RawServerResponse.swift in Sources */,
 				4719FEDF23E1547B00B1ED81 /* AlbumDetailsViewController.swift in Sources */,
 				4719FE9523DCAFBE00B1ED81 /* URLBuilder.swift in Sources */,
@@ -567,7 +560,6 @@
 				4719FECF23E0991500B1ED81 /* AlbumsCollectionViewDataSource.swift in Sources */,
 				4719FE8C23DCADF000B1ED81 /* URLExtensions.swift in Sources */,
 				4719FEC723DF492400B1ED81 /* ArtistAlbumsModels.swift in Sources */,
-				4719FE8D23DCADF000B1ED81 /* UIImageExtensions.swift in Sources */,
 				4719FE4823DCA6AE00B1ED81 /* AppDelegate.swift in Sources */,
 				4719FEDC23E1547B00B1ED81 /* AlbumDetailsWorker.swift in Sources */,
 				4719FE8A23DCADF000B1ED81 /* Reachability.swift in Sources */,
@@ -748,7 +740,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MusicRover/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -766,7 +758,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = MusicRover/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
