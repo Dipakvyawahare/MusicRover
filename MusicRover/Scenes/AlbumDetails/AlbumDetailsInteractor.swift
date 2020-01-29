@@ -19,7 +19,7 @@ extension AlbumDetailsInteractor: AlbumDetailsViewControllerInteractorInterface 
     func fetchTracks(request: AlbumDetails.Album) {
         album = request
         lastNetworkRequest?.cancel()
-        lastNetworkRequest = worker.fetchTracks(albumId: album.id){ [weak self] (result) in
+        lastNetworkRequest = worker.fetchTracks(albumId: album.id) { [weak self] (result) in
             switch result {
             case .success(let poi):
                 self?.presentResult(tracks: poi.data ?? [])

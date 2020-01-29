@@ -15,28 +15,26 @@ class TrackTableViewCell: UITableViewCell {
     @IBOutlet weak var positionLabel: UILabel!
 }
 
-
 class AlbumDetailsTableViewDataSource: NSObject, UITableViewDataSource {
     var tracks: [AlbumDetails.ViewModel.RowDataSource] = []
-        
-        func tableView(_ tableView: UITableView,
-                       numberOfRowsInSection section: Int) -> Int {
-            return tracks.count
-        }
-        
-        func tableView(_ tableView: UITableView,
-                       cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "TrackTableViewCellId",
-                                                     for: indexPath)
-            if let cell = cell as? TrackTableViewCell {
-                let art = tracks[indexPath.row]
-                cell.nameLabel.text = art.name
-                cell.artistLabel.text = art.artist
-                cell.duarationLabel.text = art.time
-                cell.positionLabel.text = art.index
-            }
-            return cell
-        }
-        
+    
+    func tableView(_ tableView: UITableView,
+                   numberOfRowsInSection section: Int) -> Int {
+        return tracks.count
     }
-
+    
+    func tableView(_ tableView: UITableView,
+                   cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "TrackTableViewCellId",
+                                                 for: indexPath)
+        if let cell = cell as? TrackTableViewCell {
+            let art = tracks[indexPath.row]
+            cell.nameLabel.text = art.name
+            cell.artistLabel.text = art.artist
+            cell.duarationLabel.text = art.time
+            cell.positionLabel.text = art.index
+        }
+        return cell
+    }
+    
+}

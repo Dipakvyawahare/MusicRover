@@ -9,4 +9,40 @@
 import XCTest
 
 class MusicRoverUITests: XCTestCase {
+    var app: XCUIApplication!
+    
+    override func setUp() {
+        super.setUp()
+        continueAfterFailure = false
+        app = XCUIApplication()
+        app.launch()
+    }
+    
+    @discardableResult
+    func waiterResultWithExpextation(_ element: XCUIElement) -> XCTWaiter.Result {
+        let myPredicate = NSPredicate(format: "exists == true")
+        let myExpectation = expectation(for: myPredicate, evaluatedWith: element,
+                                        handler: nil)
+        let result = XCTWaiter().wait(for: [myExpectation], timeout: 5)
+        return result
+    }
+    
+    func testHappyFlow() {
+        let pKey = app/*@START_MENU_TOKEN@*/.keys["P"]/*[[".keyboards.keys[\"P\"]",".keys[\"P\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        pKey.tap()
+        
+        let cell = app.cells.element(boundBy: 0)
+        waiterResultWithExpextation(cell)
+        XCTAssertTrue(cell.exists)
+        cell.tap()
+        
+        let firstCell = app.collectionViews.children(matching: .cell).element(boundBy: 0)
+        waiterResultWithExpextation(firstCell)
+        XCTAssertTrue(firstCell.exists)
+        firstCell.tap()
+        
+        let imageView = app.images["AlbumImageView"]
+        waiterResultWithExpextation(imageView)
+        XCTAssertTrue(imageView.exists)
+    }
 }

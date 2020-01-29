@@ -11,7 +11,8 @@ import Foundation
 struct Track: Decodable {
     let id: Int
     let readable: Bool
-    let title, titleShort, titleVersion, isrc: String
+    let title: String
+    let titleShort, titleVersion, isrc: String?
     let link: String?
     let duration, trackPosition, diskNumber, rank: Int
     let explicitLyrics: Bool

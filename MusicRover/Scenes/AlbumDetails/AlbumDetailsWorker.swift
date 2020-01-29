@@ -33,4 +33,3 @@ class AlbumDetailsWorker {
     }
 }
 extension AlbumDetailsWorker: DataParser {}
-
