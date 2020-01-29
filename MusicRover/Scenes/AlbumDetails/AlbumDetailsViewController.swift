@@ -70,12 +70,24 @@ class AlbumDetailsViewController: UIViewController {
             playerLayer.frame = CGRect(x: 0, y: 0, width: 10, height: 50)
             albumImageView.layer.addSublayer(playerLayer)
             player?.play()
+            playerButton.setBackgroundImage(UIImage.init(systemName: "pause.rectangle"),
+                                            for: .normal)
+            playerButton.isHidden = false
         }
     }
     
     @IBAction func pauseAudio() {
-        player?.pause()
-        playerButton.isHidden = true
+        if let player = player {
+            var image = "play.rectangle"
+            if player.timeControlStatus == .paused {
+                image = "pause.rectangle"
+                player.play()
+            } else {
+                player.pause()
+            }
+            playerButton.setBackgroundImage(UIImage.init(systemName: image),
+                                            for: .normal)
+        }
     }
 }
 
@@ -94,14 +106,18 @@ extension AlbumDetailsViewController: AlbumDetailsPresenterViewControllerInterfa
                                         style: .default) { [weak self] _ in
                                             self?.reload()
         }
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                        style: .default) { [weak self] _ in
+                                            self?.navigationController?.popViewController(animated: true)
+        }
         let okAction = UIAlertAction(title: "Ok",
                                      style: .default,
                                      handler: nil)
         switch error {
         case .custom(let msg):
-            self.display(title: "Alert", error: msg, actions: [retryAction])
+            self.display(title: "Alert", error: msg, actions: [retryAction, cancelAction])
         case .network(let msg):
-            self.display(title: "Network", error: msg, actions: [retryAction])
+            self.display(title: "Network", error: msg, actions: [retryAction, cancelAction])
         case .parser(let msg):
             self.display(title: "Parser", error: msg, actions: [okAction])
         }
@@ -114,9 +130,13 @@ extension AlbumDetailsViewController: UITableViewDelegate {
         let link = tableViewDataSource.tracks[indexPath.row].preview
         do {
             try play(url: link)
-            playerButton.isHidden = false
         } catch {
+            playerButton.isHidden = true
             print(error)
+            let okAction = UIAlertAction(title: "Ok",
+            style: .default,
+            handler: nil)
+            display(title: "Error", error: "Something went wrong", actions: [okAction])
         }
     }
 }

@@ -72,14 +72,18 @@ extension ArtistAlbumsViewController: ArtistAlbumsPresenterViewControllerInterfa
                                         style: .default) { [weak self] _ in
                                             self?.reload()
         }
+        let cancelAction = UIAlertAction(title: "Cancel",
+                                        style: .default) { [weak self] _ in
+                                            self?.navigationController?.popViewController(animated: true)
+        }
         let okAction = UIAlertAction(title: "Ok",
                                      style: .default,
                                      handler: nil)
         switch error {
         case .custom(let msg):
-            self.display(title: "Alert", error: msg, actions: [retryAction])
+            self.display(title: "Alert", error: msg, actions: [retryAction, cancelAction])
         case .network(let msg):
-            self.display(title: "Network", error: msg, actions: [retryAction])
+            self.display(title: "Network", error: msg, actions: [retryAction, cancelAction])
         case .parser(let msg):
             self.display(title: "Parser", error: msg, actions: [okAction])
         }

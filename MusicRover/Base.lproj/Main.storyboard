@@ -228,18 +228,18 @@
                                         </constraints>
                                     </imageView>
                                     <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yP5-jf-GdS">
-                                        <rect key="frame" x="169.5" y="360" width="75" height="47.5"/>
+                                        <rect key="frame" x="169.5" y="357" width="75" height="47.5"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="75" id="3DM-JV-3lv"/>
                                             <constraint firstAttribute="height" constant="50" id="EQS-Yi-4sv"/>
                                         </constraints>
-                                        <state key="normal" backgroundImage="pause.rectangle" catalog="system"/>
+                                        <state key="normal" backgroundImage="play.rectangle" catalog="system"/>
                                         <connections>
                                             <action selector="pauseAudio" destination="jQM-5q-xfB" eventType="touchUpInside" id="eRr-Cz-GDz"/>
                                         </connections>
                                     </button>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="HrK-hr-TtV">
-                                        <rect key="frame" x="3" y="417" width="408" height="401"/>
+                                        <rect key="frame" x="3" y="414" width="408" height="404"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                         <prototypes>
                                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TrackTableViewCellId" rowHeight="102" id="Uuv-ac-ZkQ" customClass="TrackTableViewCell" customModule="MusicRover" customModuleProvider="target">
@@ -318,7 +318,7 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="HrK-hr-TtV" secondAttribute="trailing" constant="3" id="Dno-9p-pFF"/>
                                     <constraint firstAttribute="bottom" secondItem="HrK-hr-TtV" secondAttribute="bottom" id="Kv0-Qx-nX0"/>
-                                    <constraint firstItem="HrK-hr-TtV" firstAttribute="top" secondItem="ycX-mV-a2d" secondAttribute="bottom" constant="3" id="MAN-NX-cB6"/>
+                                    <constraint firstItem="HrK-hr-TtV" firstAttribute="top" secondItem="ycX-mV-a2d" secondAttribute="bottom" id="MAN-NX-cB6"/>
                                     <constraint firstItem="ycX-mV-a2d" firstAttribute="leading" secondItem="Umx-l2-SpI" secondAttribute="leading" id="NCf-9C-ptc"/>
                                     <constraint firstAttribute="trailing" secondItem="ycX-mV-a2d" secondAttribute="trailing" id="Owq-Fl-BSl"/>
                                     <constraint firstItem="HrK-hr-TtV" firstAttribute="leading" secondItem="Umx-l2-SpI" secondAttribute="leading" constant="3" id="VtG-6H-KTi"/>
@@ -374,7 +374,6 @@
     </scenes>
     <resources>
         <image name="folder" catalog="system" width="64" height="46"/>
-        <image name="pause.rectangle" catalog="system" width="64" height="46"/>
         <image name="person" catalog="system" width="64" height="58"/>
         <image name="play.rectangle" catalog="system" width="64" height="46"/>
     </resources>
