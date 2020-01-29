@@ -23,16 +23,16 @@ final class ImageLoader {
         } else {
             task = URLSession.shared.dataTask(with: URL(string: urlString)!,
                                               completionHandler: { (data, _, error) -> Void in
-                                                
-                                                if error != nil {
-                                                    completionHandler(nil, urlString)
-                                                    return
-                                                }
-                                                guard let data = data else {
-                                                    completionHandler(nil, urlString)
-                                                    return
-                                                }
                                                 DispatchQueue.main.async(execute: { () -> Void in
+                                                    if error != nil {
+                                                        completionHandler(nil, urlString)
+                                                        return
+                                                    }
+                                                    guard let data = data else {
+                                                        completionHandler(nil, urlString)
+                                                        return
+                                                    }
+                                                    
                                                     if let downloadedImage = UIImage(data: data) {
                                                         imageCache.setObject(downloadedImage,
                                                                              forKey: NSString(string: urlString))

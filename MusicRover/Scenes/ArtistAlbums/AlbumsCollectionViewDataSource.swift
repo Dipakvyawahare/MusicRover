@@ -18,7 +18,9 @@ class AlbumsCollectionCell: UICollectionViewCell {
             imageLoadTask?.cancel() // Cancel older load request
             imageLoadTask = ImageLoader.shared.loadImage(urlString: imageUrl) { [weak self] (image, url) in
                 if self?.imageUrl == url {
-                    self?.albumImageView.image = image
+                    if let image = image {
+                        self?.albumImageView.image = image
+                    }
                 }
             }
         }

@@ -9,25 +9,20 @@
 import UIKit
 
 protocol ArtistAlbumsRouterInput {
-    func navigateToSomewhere()
+    func navigateToDetails(row: ArtistAlbums.ViewModel.RowDataSource)
 }
 
 class ArtistAlbumsRouter: ArtistAlbumsRouterInput {
     weak var viewController: ArtistAlbumsViewController?
     
-    func navigateToSomewhere() {
-        //viewController.performSegueWithIdentifier("ShowSomewhereScene", sender: nil)
-    }
-    
-    func passDataToNextScene(segue: UIStoryboardSegue) {
-        //if segue.identifier == "ShowSomewhereScene" {
-        //passDataToSomewhereScene(segue: segue)
-        //}
-    }
-    
-    func passDataToSomewhereScene(segue: UIStoryboardSegue) {
-        // Pass data to segue.destination from here, take reference from AViewController
-        // If, later segue.destination needs to send data back to AViewController, define protocol (delegate) in segue.destination
-        //and implement in AViewController.
+    func navigateToDetails(row: ArtistAlbums.ViewModel.RowDataSource) {
+        let sbrd = viewController?.storyboard
+        if let dvc = sbrd?.instantiateViewController(
+            withIdentifier: "AlbumDetailsViewController") as? AlbumDetailsViewController {
+            viewController?.show(dvc, sender: nil)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                dvc.output?.fetchTracks(request: AlbumDetails.Request(albumId: row.id))
+            }
+        }
     }
 }

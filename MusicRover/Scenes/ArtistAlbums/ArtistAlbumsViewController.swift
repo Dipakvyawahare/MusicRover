@@ -41,14 +41,17 @@ class ArtistAlbumsViewController: UIViewController {
         collectionView.dataSource = collectionViewDataSource
         collectionView.delegate = self
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: spacing, left: spacing, bottom: spacing, right: spacing)
+        layout.sectionInset = UIEdgeInsets(top: spacing,
+                                           left: spacing,
+                                           bottom: spacing,
+                                           right: spacing)
         layout.minimumLineSpacing = spacing
         layout.minimumInteritemSpacing = spacing
         collectionView.collectionViewLayout = layout
         displayProgressHud(show: true)
     }
     
-    func reload() {
+    @objc func reload() {
         displayProgressHud(show: true)
         output?.loadMoreAlbums()
     }
@@ -94,5 +97,27 @@ extension ArtistAlbumsViewController: UICollectionViewDelegateFlowLayout, UIColl
         let totalSpacing = (2 * spacing) + ((numberOfItemsPerRow - 1) * spacingBetweenCells)
         let width = (collectionView.bounds.width - totalSpacing)/numberOfItemsPerRow
         return CGSize(width: width, height: width * 1.3)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView,
+                        didSelectItemAt indexPath: IndexPath) {
+        router.navigateToDetails(row: collectionViewDataSource.albums[indexPath.item])
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        view.endEditing(true)
+        let height = scrollView.frame.size.height
+        let contentYoffset = scrollView.contentOffset.y
+        let distanceFromBottom = scrollView.contentSize.height - contentYoffset
+        if distanceFromBottom < height, shouldLoadMoreObject == true {
+            let performAfterDelay = 0.2
+            let selector = #selector(reload)
+            NSObject.cancelPreviousPerformRequests(withTarget: self,
+                                                   selector: selector,
+                                                   object: nil)
+            perform(selector,
+                    with: nil,
+                    afterDelay: performAfterDelay)
+        }
     }
 }

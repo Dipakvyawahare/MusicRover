@@ -44,6 +44,7 @@ class SearchArtistViewController: UIViewController {
         tableView.rowHeight = UITableView.automaticDimension
         tableView.dataSource = tableViewDataSource
         tableView.delegate = self
+        searchBar.becomeFirstResponder()
     }
     
     @objc private func loadMoreArtist() {
