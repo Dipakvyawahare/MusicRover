@@ -12,7 +12,7 @@ struct Track: Decodable {
     let id: Int
     let readable: Bool
     let title, titleShort, titleVersion, isrc: String
-    let link: String
+    let link: String?
     let duration, trackPosition, diskNumber, rank: Int
     let explicitLyrics: Bool
     let explicitContentLyrics, explicitContentCover: Int

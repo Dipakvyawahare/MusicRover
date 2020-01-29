@@ -21,7 +21,9 @@ class ArtistAlbumsRouter: ArtistAlbumsRouterInput {
             withIdentifier: "AlbumDetailsViewController") as? AlbumDetailsViewController {
             viewController?.show(dvc, sender: nil)
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                dvc.output?.fetchTracks(request: AlbumDetails.Request(albumId: row.id))
+                dvc.output?.fetchTracks(request: AlbumDetails.Album(id: row.id,
+                                                                      name: row.album,
+                                                                      image: row.image))
             }
         }
     }

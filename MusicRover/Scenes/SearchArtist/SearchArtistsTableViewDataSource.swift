@@ -26,7 +26,7 @@ class ArtistTableViewCell: UITableViewCell {
     }
 }
 
-class SearchArtistsTableViewDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
+class SearchArtistsTableViewDataSource: NSObject, UITableViewDataSource {
     var artists: [SearchArtist.ViewModel.RowDataSource] = []
     
     func tableView(_ tableView: UITableView,

@@ -7,13 +7,26 @@
 //
 
 struct AlbumDetails {
-    struct Request {
-        let albumId: Int
+    struct Album {
+        let id: Int
+        let name: String
+        let image: String
     }
     struct Response {
-        let outputString:String
+        let album: Album
+        let result: Result<[Track], ErrorResult>
     }
     struct ViewModel {
-        let formattedString:String
+        struct RowDataSource {
+            let id: Int
+            let name: String
+            let time: String
+            let index: String
+            let artist: String
+            let preview: String
+        }
+        let album: Album
+        let title: String
+        let tracks: [RowDataSource]
     }
 }

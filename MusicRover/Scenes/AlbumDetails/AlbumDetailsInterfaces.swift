@@ -7,14 +7,15 @@
 //
 
 protocol AlbumDetailsViewControllerInteractorInterface {
-    func fetchTracks(request: AlbumDetails.Request)
+    func fetchTracks(request: AlbumDetails.Album)
+    func reload()
 }
 
 protocol AlbumDetailsInteractorPresenterInterface {
     func presentTracks(response: AlbumDetails.Response)
 }
 
-protocol AlbumDetailsPresenterViewControllerInterface : class {
+protocol AlbumDetailsPresenterViewControllerInterface: class {
     func displayTracks(viewModel: AlbumDetails.ViewModel)
     func displayError(error: ErrorResult)
 }

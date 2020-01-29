@@ -11,7 +11,6 @@ import UIKit
 class SearchArtistViewController: UIViewController {
     var output: SearchArtistViewControllerInteractorInterface?
     var router: SearchArtistRouter = SearchArtistRouter()
-    
     lazy var tableViewDataSource = SearchArtistsTableViewDataSource()
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!

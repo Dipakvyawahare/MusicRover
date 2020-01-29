@@ -8,7 +8,7 @@
 
 struct ArtistAlbums {
     struct Request {
-        let inputString:String
+        let inputString: String
     }
     struct Response {
         let artistName: String

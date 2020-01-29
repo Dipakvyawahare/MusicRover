@@ -57,6 +57,7 @@
 		4719FEDF23E1547B00B1ED81 /* AlbumDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FED823E1547B00B1ED81 /* AlbumDetailsViewController.swift */; };
 		4719FEE023E1547B00B1ED81 /* AlbumDetailsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FED923E1547B00B1ED81 /* AlbumDetailsInteractor.swift */; };
 		4719FEE223E1558E00B1ED81 /* Track.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEE123E1558E00B1ED81 /* Track.swift */; };
+		4719FEE423E167C700B1ED81 /* AlbumDetailsTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEE323E167C700B1ED81 /* AlbumDetailsTableViewDataSource.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -132,6 +133,7 @@
 		4719FED823E1547B00B1ED81 /* AlbumDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsViewController.swift; sourceTree = "<group>"; };
 		4719FED923E1547B00B1ED81 /* AlbumDetailsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsInteractor.swift; sourceTree = "<group>"; };
 		4719FEE123E1558E00B1ED81 /* Track.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Track.swift; sourceTree = "<group>"; };
+		4719FEE323E167C700B1ED81 /* AlbumDetailsTableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumDetailsTableViewDataSource.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -242,6 +244,7 @@
 				4719FED723E1547B00B1ED81 /* AlbumDetailsModels.swift */,
 				4719FED823E1547B00B1ED81 /* AlbumDetailsViewController.swift */,
 				4719FED923E1547B00B1ED81 /* AlbumDetailsInteractor.swift */,
+				4719FEE323E167C700B1ED81 /* AlbumDetailsTableViewDataSource.swift */,
 			);
 			path = AlbumDetails;
 			sourceTree = "<group>";
@@ -557,6 +560,7 @@
 				4719FEE023E1547B00B1ED81 /* AlbumDetailsInteractor.swift in Sources */,
 				4719FE9E23DCB5A300B1ED81 /* SearchArtistPresenter.swift in Sources */,
 				4719FE9F23DCB5A300B1ED81 /* SearchArtistWorker.swift in Sources */,
+				4719FEE423E167C700B1ED81 /* AlbumDetailsTableViewDataSource.swift in Sources */,
 				4719FECB23E0920400B1ED81 /* PagingDataStore.swift in Sources */,
 				4719FECD23E092ED00B1ED81 /* Album.swift in Sources */,
 				4719FE8B23DCADF000B1ED81 /* FileManagerExtensions.swift in Sources */,
