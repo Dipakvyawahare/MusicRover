@@ -10,8 +10,8 @@ import UIKit
 
 class ArtistAlbumsWorker {
     typealias Handler = (Result<RawAPIResponse<Album>, ErrorResult>) -> Void
-//    lazy var service: RequestServiceProtocol = RequestService.shared
-    lazy var service: RequestServiceProtocol = MockAPIService.shared
+    lazy var service: RequestServiceProtocol = RequestService.shared
+//    lazy var service: RequestServiceProtocol = MockAPIService.shared
     func fetchArtistAlbums(artistid: Int,
                            index: Int = 0,
                            completion: @escaping (Handler)) -> URLSessionDataTask? {

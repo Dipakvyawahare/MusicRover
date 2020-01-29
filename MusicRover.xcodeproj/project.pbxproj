@@ -68,6 +68,7 @@
 		4719FF0223E1B9C000B1ED81 /* AlbumDetailsWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FEFF23E1B9C000B1ED81 /* AlbumDetailsWorkerTests.swift */; };
 		4719FF0323E1B9C000B1ED81 /* AlbumDetailsPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FF0023E1B9C000B1ED81 /* AlbumDetailsPresenterTests.swift */; };
 		4719FF0423E1B9C000B1ED81 /* AlbumDetailsInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4719FF0123E1B9C000B1ED81 /* AlbumDetailsInteractorTests.swift */; };
+		4719FF0623E1C2E100B1ED81 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 4719FF0523E1C2E000B1ED81 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -154,6 +155,7 @@
 		4719FEFF23E1B9C000B1ED81 /* AlbumDetailsWorkerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumDetailsWorkerTests.swift; sourceTree = "<group>"; };
 		4719FF0023E1B9C000B1ED81 /* AlbumDetailsPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumDetailsPresenterTests.swift; sourceTree = "<group>"; };
 		4719FF0123E1B9C000B1ED81 /* AlbumDetailsInteractorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumDetailsInteractorTests.swift; sourceTree = "<group>"; };
+		4719FF0523E1C2E000B1ED81 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +186,7 @@
 		4719FE3B23DCA6AE00B1ED81 = {
 			isa = PBXGroup;
 			children = (
+				4719FF0523E1C2E000B1ED81 /* README.md */,
 				4719FE4623DCA6AE00B1ED81 /* MusicRover */,
 				4719FE5D23DCA6AF00B1ED81 /* MusicRoverTests */,
 				4719FE6823DCA6B000B1ED81 /* MusicRoverUITests */,
@@ -540,6 +543,7 @@
 			files = (
 				4719FEB423DD901600B1ED81 /* Sample.json in Resources */,
 				4719FED123E0B13600B1ED81 /* Albums.json in Resources */,
+				4719FF0623E1C2E100B1ED81 /* README.md in Resources */,
 				4719FEEA23E1AC1700B1ED81 /* Tracks.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
