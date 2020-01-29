@@ -3,7 +3,7 @@
 //  MusicRover
 //
 //  Created by Dipak V. Vyawahare on 27/01/20.
-//  Copyright (c) 2020 Globant Inc. All rights reserved.
+//  Copyright (c) 2020 MyOrganization Inc. All rights reserved.
 //
 
 import UIKit
@@ -20,7 +20,7 @@ extension ArtistAlbumsInteractor: ArtistAlbumsViewControllerInteractorInterface 
     func fetchAlbums(request: SearchArtist.ViewModel.RowDataSource) {
         artist = request
         lastNetworkRequest?.cancel()
-        lastNetworkRequest = worker.searchArtistAlbums(artistid: request.id) { [weak self] (result) in
+        lastNetworkRequest = worker.fetchArtistAlbums(artistid: request.id) { [weak self] (result) in
             switch result {
             case .success(let poi):
                 self?.cachedResult = PagingDataStore(total: poi.total)
@@ -51,7 +51,7 @@ extension ArtistAlbumsInteractor: ArtistAlbumsViewControllerInteractorInterface 
     func loadMoreAlbums() {
         lastNetworkRequest?.cancel()
         let index = cachedResult?.index ?? 0
-        lastNetworkRequest = worker.searchArtistAlbums(artistid: artist.id,
+        lastNetworkRequest = worker.fetchArtistAlbums(artistid: artist.id,
                                                        index: index) { [weak self] (result) in
                                                         switch result {
                                                         case .success(let poi):

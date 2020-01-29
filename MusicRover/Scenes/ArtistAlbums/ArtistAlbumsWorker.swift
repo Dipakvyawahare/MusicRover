@@ -3,19 +3,18 @@
 //  MusicRover
 //
 //  Created by Dipak V. Vyawahare on 27/01/20.
-//  Copyright (c) 2020 Globant Inc. All rights reserved.
+//  Copyright (c) 2020 MyOrganization Inc. All rights reserved.
 //
 
 import UIKit
 
 class ArtistAlbumsWorker {
     typealias Handler = (Result<RawAPIResponse<Album>, ErrorResult>) -> Void
-    func searchArtistAlbums(artistid: Int,
-                            index: Int = 0,
-                            completion: @escaping (Handler)) -> URLSessionDataTask? {
-        // FIXME: Here's something you need to fix
-//        let service = RequestService.shared
-        let service = MockAPIService.shared
+//    lazy var service: RequestServiceProtocol = RequestService.shared
+    lazy var service: RequestServiceProtocol = MockAPIService.shared
+    func fetchArtistAlbums(artistid: Int,
+                           index: Int = 0,
+                           completion: @escaping (Handler)) -> URLSessionDataTask? {
         
        let task = service.fetchData(for: "artist/\(artistid)/albums",
         queryParmas: ["index": String(index)]) { [weak self] (result) in

@@ -3,16 +3,17 @@
 //  MusicRover
 //
 //  Created by Dipak V. Vyawahare on 29/01/20.
-//  Copyright (c) 2020 Globant Inc. All rights reserved.
+//  Copyright (c) 2020 MyOrganization Inc. All rights reserved.
 //
 
 import UIKit
 
 class AlbumDetailsWorker {
+    lazy var service: RequestServiceProtocol = RequestService.shared
     typealias Handler = (Result<RawAPIResponse<Track>, ErrorResult>) -> Void
     func fetchTracks(albumId: Int,
                      completion: @escaping (Handler)) -> URLSessionDataTask? {
-        let task = RequestService.shared.fetchData(for: "album/\(albumId)/tracks",
+        let task = service.fetchData(for: "album/\(albumId)/tracks",
         queryParmas: [:]) { [weak self] (result) in
             switch result {
             case .success(let data) :

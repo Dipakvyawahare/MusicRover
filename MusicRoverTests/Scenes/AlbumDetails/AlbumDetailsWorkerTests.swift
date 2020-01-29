@@ -1,5 +1,5 @@
 //
-//  SearchArtistWorkerTests.swift
+//  AlbumDetailsWorkerTests.swift
 //  MusicRover
 //
 //  Created by Dipak V. Vyawahare on 29/01/20.
@@ -9,8 +9,8 @@
 import XCTest
 @testable import MusicRover
 
-class SearchArtistWorkerTests: XCTestCase {
-    var sut: SearchArtistWorker!
+class AlbumDetailsWorkerTests: XCTestCase {
+    var sut: AlbumDetailsWorker!
     let workerOutputSpy = ServiceOutputSpy()
     
     override func setUp() {
@@ -23,32 +23,32 @@ class SearchArtistWorkerTests: XCTestCase {
     }
     
     func configure() {
-        sut = SearchArtistWorker()
+        sut = AlbumDetailsWorker()
         sut.service = workerOutputSpy
     }
 
-    func testSearch() {
+    func testFetch() {
         workerOutputSpy.performFailedTest = false
-        _ = sut.searchArtist(inputString: "") { (result) in
+        _ = sut.fetchTracks(albumId: 1, completion: { (result) in
             switch result {
             case .failure:
-                XCTAssert(false, "Expected valid testSearch() data")
+                XCTAssert(false, "Expected valid testFetch() data")
             default:
                 break
             }
-        }
+        })
     }
     
-    func testFailedSearch() {
+    func testFailedFetch() {
         workerOutputSpy.performFailedTest = true
-        _ = sut.searchArtist(inputString: "") { (result) in
+        _ = sut.fetchTracks(albumId: 1, completion: { (result) in
             switch result {
             case .success:
-                XCTAssert(false, "Expected failure testFailedSearch()")
+                XCTAssert(false, "Expected failure testFailedFetch()")
             default:
                 break
             }
-        }
+        })
     }
     
     class ServiceOutputSpy: RequestServiceProtocol {
@@ -57,7 +57,7 @@ class SearchArtistWorkerTests: XCTestCase {
                        queryParmas: [String: String],
                        completion: @escaping ((Result<Data, ErrorResult>) -> Void)) -> URLSessionDataTask? {
             if performFailedTest == false {
-                guard let data = FileManager.readJson(forResource: "Sample",
+                guard let data = FileManager.readJson(forResource: "Tracks",
                                                       bundle: Bundle(for: ArtistTests.self))  else {
                                                         XCTAssert(false, "Can't get data from sample.json")
                                                         return nil
