@@ -1,5 +1,5 @@
 # MusicRover
-- Created for demo test given by Tidal.
+- Clean Architecture Demo
 
 ## Features
 

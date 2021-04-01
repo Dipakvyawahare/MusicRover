@@ -28,7 +28,7 @@ class MusicRoverUITests: XCTestCase {
     }
     
     func testHappyFlow() {
-        let pKey = app/*@START_MENU_TOKEN@*/.keys["P"]/*[[".keyboards.keys[\"P\"]",".keys[\"P\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/
+        let pKey = app.keys["P"]
         pKey.tap()
         
         let cell = app.cells.element(boundBy: 0)
