@@ -8,12 +8,7 @@
 
 import Foundation
 
-let endPoint = "http://api.deezer.com"
-//let searchArtist = URL(string: "http://api.deezer.com/search/artist?q=kygo")!
-//let artistAlbums = URL(string: "http://api.deezer.com/artist/8706544/albums")!
-//let albumInfo = URL(string: "http://api.deezer.com/album/125657812")!
-//let albumTracks = URL(string: "http://api.deezer.com/album/125657812/tracks")!
-
+let endPoint = ""
 protocol RequestServiceProtocol {
     @discardableResult func fetchData(for path: String,
                                       queryParmas: [String: String],
